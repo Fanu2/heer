@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/heer.html",
+      "permanent": true
+    }
+  ]
+}
