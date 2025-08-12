@@ -1,39 +1,3 @@
-Skip to main content
- 
-Texts
- 
-Video
- 
-Audio
- 
-Software
- 
-Images
-Sign up for free
-Log in
- Search metadata
- Search text contents
- Search TV news captions
- Search radio transcripts
- Search archived web sites
-Advanced Search
-About Blog Projects Help Donate  Contact Jobs Volunteer People
-Full text of "Heer Waris Shah PDF"
-See other formats
-8 
-
-
-ਏਡ ਕਾਟ 
-
-
-00੫ 
-00008 51 
-
-
-$€11]71 : 9011100₹11 (10111801) 
-
-
-1੬%( €01160 7071 : 20111301-₹3੧118.2011 
 
 
 ਵਾਰਿਸ ਸ਼ਾਹ 
@@ -10193,5 +10157,6 @@ $€11]71 : 9011100₹11 (10111801)
 
 
 ੧12 171 
+
 
 
