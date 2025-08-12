@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Heer Waris Shah — PDF Viewer</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--accent:#0f172a}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--card);box-shadow:0 1px 4px rgba(2,6,23,.08)}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand h1{font-size:16px;margin:0}
+    .controls{display:flex;gap:8px}
+    .btn{background:#0b74ff;color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+    .ghost{background:transparent;color:var(--accent);border:1px solid rgba(2,6,23,.06);padding:8px 12px;border-radius:8px;text-decoration:none}
+    .viewer{height:calc(100vh - 64px);background:var(--bg);display:block;width:100%;border:0}
+    .small{font-size:13px;color:#475569}
+    .notice{padding:8px 16px;font-size:13px;color:#334155}
+    @media (max-width:640px){.topbar{padding:10px}.brand h1{font-size:14px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="6" fill="#0b74ff" />
+        <text x="50%" y="55%" text-anchor="middle" fill="white" font-family="sans-serif" font-size="12">HW</text>
+      </svg>
+      <div>
+        <h1>Heer Waris Shah — Urdu (PDF)</h1>
+        <div class="small">PDF viewer powered by a static HTML page</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <a id="openNew" class="btn" target="_blank" rel="noopener">Open in new tab</a>
+      <a id="download" class="ghost" download>Download PDF</a>
+    </div>
+  </div>
+
+  <div class="notice" id="notice">Loading PDF…</div>
+
+  <!-- The iframe shows the PDF. If the browser has a native PDF viewer this will work. -->
+  <iframe id="pdfViewer" class="viewer" sandbox="allow-same-origin allow-scripts allow-popups"></iframe>
+
+  <script>
+    // raw GitHub URL for the PDF (spaces encoded)
+    const rawPdfUrl = 'https://raw.githubusercontent.com/Fanu2/heer/main/public/heer%20waris%20shah%20urdu.pdf';
+
+    const viewer = document.getElementById('pdfViewer');
+    const openNew = document.getElementById('openNew');
+    const download = document.getElementById('download');
+    const notice = document.getElementById('notice');
+
+    // Use the raw URL inside the iframe. Some browsers show PDF toolbar automatically.
+    viewer.src = rawPdfUrl;
+    openNew.href = rawPdfUrl;
+    download.href = rawPdfUrl;
+
+    // Quick check if PDF loaded (very basic): try to set a timeout and then remove the loading notice.
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        notice.textContent = 'If the PDF does not render, click "Open in new tab" to view or download.';
+      }, 800);
+    });
+
+    // Helpful hint for CORS or GitHub raw availability
+    fetch(rawPdfUrl, {method: 'HEAD'}).then(res => {
+      if (!res.ok) {
+        notice.textContent = 'Warning: PDF could not be fetched from GitHub raw URL (status ' + res.status + '). You may need to copy the PDF into this site or allow GitHub raw access.';
+      } else {
+        notice.style.display = 'none';
+      }
+    }).catch(err => {
+      notice.textContent = 'Warning: Unable to reach raw.githubusercontent.com — if the PDF fails to render, try "Open in new tab".';
+    });
+  </script>
+</body>
+</html>
